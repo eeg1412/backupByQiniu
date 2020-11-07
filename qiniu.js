@@ -73,7 +73,7 @@ exports.backup = async function () {
 };
 exports.creatZIP = async function (path, name) {
     let promise = new Promise((resolve, reject) => {
-        log.info('开始创建ZIP' + `${path}/${name}.zip`);
+        log.info('开始创建ZIP ' + `${path}/${name}.zip`);
         const zipPath = `${path}/${name}.zip`
         const output = fs.createWriteStream(zipPath);
         const archive = archiver('zip', {
