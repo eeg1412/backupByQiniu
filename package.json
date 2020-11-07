@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "backup": "node index.js"
+    "backup": "node index.js",
+    "upload": "node upload.js"
   },
   "author": "广树",
   "license": "ISC",
