@@ -37,8 +37,6 @@ exports.backup = async function () {
                 mtimeMs: fileStat.mtimeMs
             };
             dirFileList.push(fileInfo);
-            console.log(fileStat);
-            console.log(`${fileItem.name}:${isFile}`);
         });
         // 给文件夹/文件进行排序
         dirFileList = _.orderBy(dirFileList, "mtimeMs", "desc");
@@ -46,7 +44,6 @@ exports.backup = async function () {
             log.warning('该目录不存在文件！');
             return
         }
-        console.log(dirFileList);
         // 获取最新的文件
         lastFile = dirFileList[0];
         let localFile = '';
@@ -106,15 +103,18 @@ exports.putFile = async function (uploadToken, key, localFile, putExtra) {
         formUploader.putFile(uploadToken, key, localFile, putExtra, function (respErr,
             respBody, respInfo) {
             if (respErr) {
-                log.warning(util.inspect(respErr, { colors: true, depth: null }));
+                log.error(util.inspect(respErr, { colors: true, depth: null }));
+                log.error('上传失败！');
                 resolve(respErr);
             }
             if (respInfo.statusCode == 200) {
                 log.info(util.inspect(respBody, { colors: true, depth: null }));
+                log.info('上传成功！');
                 resolve(respBody);
             } else {
                 log.warning(respInfo.statusCode);
                 log.warning(util.inspect(respBody, { colors: true, depth: null }));
+                log.error('上传失败！');
                 resolve(respInfo.statusCode, respBody);
             }
         });
