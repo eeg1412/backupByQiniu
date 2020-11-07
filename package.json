@@ -1,0 +1,19 @@
+{
+  "name": "backupbyqiniu",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "backup": "node index.js"
+  },
+  "author": "广树",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^5.0.2",
+    "chalk": "^4.1.0",
+    "dotenv": "^8.2.0",
+    "lodash": "^4.17.20",
+    "node-schedule": "^1.3.2",
+    "qiniu": "^7.3.2"
+  }
+}
